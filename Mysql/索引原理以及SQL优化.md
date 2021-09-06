@@ -53,7 +53,7 @@ where
 
 前面提到了访问磁盘，那么这里先简单介绍一下磁盘IO和预读，磁盘读取数据靠的是机械运动，每次读取数据花费的时间可以分为寻道时间、旋转延迟、传输时间三个部分，寻道时间指的是磁臂移动到指定磁道所需要的时间，主流磁盘一般在5ms以下；旋转延迟就是我们经常听说的磁盘转速，比如一个磁盘7200转，表示每分钟能转7200次，也就是说1秒钟能转120次，旋转延迟就是1/120/2 = 4.17ms；传输时间指的是从磁盘读出或将数据写入磁盘的时间，一般在零点几毫秒，相对于前两个时间可以忽略不计。那么访问一次磁盘的时间，即一次磁盘IO的时间约等于5+4.17 = 9ms左右，听起来还挺不错的，但要知道一台500 -MIPS的机器每秒可以执行5亿条指令，因为指令依靠的是电的性质，换句话说执行一次IO的时间可以执行40万条指令，数据库动辄十万百万乃至千万级数据，每次9毫秒的时间，显然是个灾难。下图是计算机硬件延迟的对比图，供大家参考：
 
-![various-system-software-hardware-latencies](https://awps-assets.meituan.net/mit-x/blog-images-bundle-2014/7f46a0a4.png)
+![various-system-software-hardware-latencies](C:\Users\p2yh\Documents\zach\note\topk\Mysql\索引原理以及SQL优化.assets\7f46a0a4.png)
 
 various-system-software-hardware-latencies
 
@@ -67,7 +67,7 @@ various-system-software-hardware-latencies
 
 #### 详解b+树
 
-![b+树](https://awps-assets.meituan.net/mit-x/blog-images-bundle-2014/7af22798.jpg)
+![b+树](C:\Users\p2yh\Documents\zach\note\topk\Mysql\索引原理以及SQL优化.assets\7af22798.jpg)
 
 b+树
 
